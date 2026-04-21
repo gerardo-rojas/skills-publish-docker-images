@@ -26,4 +26,5 @@ jobs:
           docker build . -tag ghcr.io/gerardo-rojas/skills-publish-docker-images/Stackoverflown:main
       - name: Publish
         run: |
+          docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
           docker push ghcr.io/gerardo-rojas/skills-publish-docker-images/Stackoverflown:main
