@@ -18,13 +18,12 @@ jobs:
 
       - name: Log in to the Container registry
         uses: docker/login-action@v3
+        
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build
+      - name: Build & Publish
         run: |
-          docker build . --tag ghcr.io/gerardo-rojas/skills-publish-docker-images/Stackoverflown:main
-      - name: Publish
-        run: |
+          docker build . -tag ghcr.io/gerardo-rojas/skills-publish-docker-images/Stackoverflown:main
           docker push ghcr.io/gerardo-rojas/skills-publish-docker-images/Stackoverflown:main
