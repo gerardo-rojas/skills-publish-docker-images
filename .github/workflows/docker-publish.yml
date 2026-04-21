@@ -21,7 +21,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push Docker image
+      - name: Build
         run: |
-          docker build . --tag ghcr.io/gerardo-rojas/skills-publish-docker-images/Stackoverflown:latest
+          docker build . -tag ghcr.io/gerardo-rojas/skills-publish-docker-images/Stackoverflown:latest
+      - name: Publish
+        run: |
           docker push ghcr.io/gerardo-rojas/skills-publish-docker-images/Stackoverflown:latest
